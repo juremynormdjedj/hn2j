@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { GlowCard } from '@/components/GlowCard';
+import { Section } from '@/components/Section';
 
 const duo = [
   {
@@ -69,7 +70,7 @@ export const HeroSection = () => {
           </p>
 
           {/* Duo */}
-
+          <Section dark>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
             {duo.map((d, index) => (
               <GlowCard key={d.FullName} className="group">
@@ -86,6 +87,7 @@ export const HeroSection = () => {
               </GlowCard>
             ))}
           </div>
+          </Section>
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in" style={{ animationDelay: '0.3s' }}>
