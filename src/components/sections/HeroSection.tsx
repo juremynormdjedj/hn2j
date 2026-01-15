@@ -1,17 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { GlowCard } from '@/components/GlowCard';
-import { Section } from '@/components/Section';
-
-const duo = [
-  {
-    FullName: 'Julien Normand'
-  },
-  {
-    FullName: 'Jérémy Hadjedj'
-  }
-];
 
 export const HeroSection = () => {
   return (
@@ -56,11 +45,11 @@ export const HeroSection = () => {
             <Sparkles className="w-4 h-4 text-glow-purple" />
             <span className="text-sm text-muted-foreground">Architecte Technique et Fonctionnel de vos outils Microsoft</span>
           </div>
-          
+
           {/* Headline */}
           <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-bold text-foreground mb-6 leading-tight animate-fade-in" style={{ animationDelay: '0.1s' }}>
-            <span className="block mt-2">Conseiller, c'est bien. Livrer, c'est mieux. Bienvenue chez</span>
             <span className="gradient-text">HN2J</span>
+            <span className="block mt-2">L'innovation proche de vous</span>
           </h1>
 
           {/* Subheadline */}
