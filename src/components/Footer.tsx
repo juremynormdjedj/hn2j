@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Linkedin, Mail, Phone } from 'lucide-react';
-import logo from '@/assets/logo-hn2j.jpeg';
+import logo from '@/assets/logo-hn2j.png';
 
 export const Footer = () => {
   return (
