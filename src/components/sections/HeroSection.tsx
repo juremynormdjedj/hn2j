@@ -49,7 +49,7 @@ export const HeroSection = () => {
           {/* Headline */}
           <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-bold text-foreground mb-6 leading-tight animate-fade-in" style={{ animationDelay: '0.1s' }}>
             <span className="gradient-text">HN2J</span>
-            <span className="block mt-2">L'innovation proche de vous</span>
+            <span className="block mt-2">L'innovation proche de vous !!</span>
           </h1>
 
           {/* Subheadline */}
