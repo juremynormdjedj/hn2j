@@ -43,13 +43,13 @@ export const HeroSection = () => {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 bg-card/50 backdrop-blur-sm border border-border-subtle rounded-full px-4 py-2 mb-8 animate-fade-in">
             <Sparkles className="w-4 h-4 text-glow-purple" />
-            <span className="text-sm text-muted-foreground">Microsoft Technology Experts</span>
+            <span className="text-sm text-muted-foreground">Architecte Technique et Fonctionnel de vos outils Microsoft</span>
           </div>
 
           {/* Headline */}
           <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-bold text-foreground mb-6 leading-tight animate-fade-in" style={{ animationDelay: '0.1s' }}>
             <span className="gradient-text">HN2J</span>
-            <span className="block mt-2">Innovation closer to you</span>
+            <span className="block mt-2">L'innovation proche de vous</span>
           </h1>
 
           {/* Subheadline */}
@@ -62,13 +62,13 @@ export const HeroSection = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in" style={{ animationDelay: '0.3s' }}>
             <Link to="/contact">
               <Button variant="hero" size="xl">
-                Start Your Project
+                Démarrer votre projet
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </Link>
             <Link to="/#expertise">
               <Button variant="hero-outline" size="xl">
-                Explore Our Expertise
+                Explorer nos expertises
               </Button>
             </Link>
           </div>
