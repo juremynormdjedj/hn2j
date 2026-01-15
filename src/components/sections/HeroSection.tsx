@@ -15,7 +15,7 @@ const duo = [
 
 export const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex items-top justify-center overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-midnight-blue">
         {/* Gradient Overlay */}
@@ -50,7 +50,7 @@ export const HeroSection = () => {
 
       {/* Content */}
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-4xl mx-auto text-center" style="margin-top: 30px">
           {/* Badge */}
           <div className="inline-flex items-center gap-2 bg-card/50 backdrop-blur-sm border border-border-subtle rounded-full px-4 py-2 mb-8 animate-fade-in">
             <Sparkles className="w-4 h-4 text-glow-purple" />
@@ -59,8 +59,8 @@ export const HeroSection = () => {
           
           {/* Headline */}
           <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-bold text-foreground mb-6 leading-tight animate-fade-in" style={{ animationDelay: '0.1s' }}>
+            <span className="block mt-2">Conseiller, c'est bien. Livrer, c'est mieux. Bienvenue chez</span>
             <span className="gradient-text">HN2J</span>
-            <span className="block mt-2">On ne fait pas que du conseil, on livre des solutions</span>
           </h1>
 
           {/* Subheadline */}
@@ -68,6 +68,26 @@ export const HeroSection = () => {
             Donner aux équipes métiers et informatiques les moyens de réussir grâce aux technologies Microsoft.<br/>
             Des services experts de conseil, de montée en compétence et d’accompagnement, adaptés à votre parcours de transformation digitale.
           </p>
+
+          {/* Duo */}
+          <Section>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+            {duo.map((d, index) => (
+              <GlowCard key={d.FullName} className="group">
+                <div className="flex items-start gap-4 mb-6">
+                  <div>
+                    <h3 className="font-display text-xl font-semibold text-foreground mb-2 group-hover:gradient-text transition-all">
+                      {d.FullName}
+                    </h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed">
+                      {d.FullName}
+                    </p>
+                  </div>
+                </div>
+              </GlowCard>
+            ))}
+          </div>
+          </Section>
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in" style={{ animationDelay: '0.3s' }}>
