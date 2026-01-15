@@ -15,7 +15,7 @@ const duo = [
 
 export const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-top justify-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-midnight-blue">
         {/* Gradient Overlay */}
@@ -50,7 +50,7 @@ export const HeroSection = () => {
 
       {/* Content */}
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
-        <div className="max-w-4xl mx-auto text-center" style="margin-top: 30px">
+        <div className="max-w-4xl mx-auto text-center">
           {/* Badge */}
           <div className="inline-flex items-center gap-2 bg-card/50 backdrop-blur-sm border border-border-subtle rounded-full px-4 py-2 mb-8 animate-fade-in">
             <Sparkles className="w-4 h-4 text-glow-purple" />
