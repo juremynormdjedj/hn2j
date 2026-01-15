@@ -69,26 +69,6 @@ export const HeroSection = () => {
             Des services experts de conseil, de montée en compétence et d’accompagnement, adaptés à votre parcours de transformation digitale.
           </p>
 
-          {/* Duo */}
-          <Section>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-            {duo.map((d, index) => (
-              <GlowCard key={d.FullName} className="group">
-                <div className="flex items-start gap-4 mb-6">
-                  <div>
-                    <h3 className="font-display text-xl font-semibold text-foreground mb-2 group-hover:gradient-text transition-all">
-                      {d.FullName}
-                    </h3>
-                    <p className="text-muted-foreground text-sm leading-relaxed">
-                      {d.FullName}
-                    </p>
-                  </div>
-                </div>
-              </GlowCard>
-            ))}
-          </div>
-          </Section>
-
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in" style={{ animationDelay: '0.3s' }}>
             <Link to="/contact">
