@@ -1,80 +1,29 @@
 import { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { Section, SectionHeader } from '@/components/Section';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { Label } from '@/components/ui/label';
 import { GlowCard } from '@/components/GlowCard';
 import { Send, Mail, Phone, MapPin, CheckCircle2 } from 'lucide-react';
 import { toast } from 'sonner';
-import { supabase } from '@/integrations/supabase/client';
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/form';
-
-const contactFormSchema = z.object({
-  name: z.string().trim().min(1, 'Name is required').max(100, 'Name must be less than 100 characters'),
-  email: z.string().trim().email('Please enter a valid email').max(255, 'Email must be less than 255 characters'),
-  company: z.string().trim().max(100, 'Company name must be less than 100 characters').optional(),
-  subject: z.string().trim().min(1, 'Subject is required').max(200, 'Subject must be less than 200 characters'),
-  message: z.string().trim().min(1, 'Message is required').max(2000, 'Message must be less than 2000 characters'),
-});
-
-type ContactFormValues = z.infer<typeof contactFormSchema>;
 
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-  const form = useForm<ContactFormValues>({
-    resolver: zodResolver(contactFormSchema),
-    defaultValues: {
-      name: '',
-      email: '',
-      company: '',
-      subject: '',
-      message: '',
-    },
-  });
-
-  const onSubmit = async (data: ContactFormValues) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     setIsSubmitting(true);
-
-    try {
-      const { data: response, error } = await supabase.functions.invoke('send-contact-email', {
-        body: {
-          name: data.name,
-          email: data.email,
-          company: data.company || undefined,
-          subject: data.subject,
-          message: data.message,
-        },
-      });
-
-      if (error) {
-        console.error('Error sending email:', error);
-        toast.error('Failed to send message. Please try again.');
-        return;
-      }
-
-      setSubmitted(true);
-      toast.success('Message sent successfully! We\'ll get back to you soon.');
-      form.reset();
-    } catch (error) {
-      console.error('Error sending email:', error);
-      toast.error('Failed to send message. Please try again.');
-    } finally {
-      setIsSubmitting(false);
-    }
+    
+    // Simulate form submission
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    
+    setIsSubmitting(false);
+    setSubmitted(true);
+    toast.success('Message sent successfully! We\'ll get back to you soon.');
   };
 
   return (
@@ -131,124 +80,86 @@ const Contact = () => {
                     </Button>
                   </div>
                 ) : (
-                  <Form {...form}>
-                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <FormField
-                          control={form.control}
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="space-y-2">
+                        <Label htmlFor="name">Full Name</Label>
+                        <Input
+                          id="name"
                           name="name"
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormLabel>Full Name</FormLabel>
-                              <FormControl>
-                                <Input
-                                  placeholder="John Doe"
-                                  className="bg-background border-border-subtle focus:border-glow-blue transition-colors"
-                                  {...field}
-                                />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
+                          placeholder="John Doe"
+                          required
+                          className="bg-background border-border-subtle focus:border-glow-blue transition-colors"
                         />
-                        <FormField
-                          control={form.control}
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="email">Email Address</Label>
+                        <Input
+                          id="email"
                           name="email"
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormLabel>Email Address</FormLabel>
-                              <FormControl>
-                                <Input
-                                  type="email"
-                                  placeholder="john@company.com"
-                                  className="bg-background border-border-subtle focus:border-glow-blue transition-colors"
-                                  {...field}
-                                />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
+                          type="email"
+                          placeholder="john@company.com"
+                          required
+                          className="bg-background border-border-subtle focus:border-glow-blue transition-colors"
                         />
                       </div>
+                    </div>
 
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <FormField
-                          control={form.control}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="space-y-2">
+                        <Label htmlFor="company">Company</Label>
+                        <Input
+                          id="company"
                           name="company"
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormLabel>Company</FormLabel>
-                              <FormControl>
-                                <Input
-                                  placeholder="Your Company"
-                                  className="bg-background border-border-subtle focus:border-glow-blue transition-colors"
-                                  {...field}
-                                />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-                        <FormField
-                          control={form.control}
-                          name="subject"
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormLabel>Subject</FormLabel>
-                              <FormControl>
-                                <Input
-                                  placeholder="How can we help?"
-                                  className="bg-background border-border-subtle focus:border-glow-blue transition-colors"
-                                  {...field}
-                                />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
+                          placeholder="Your Company"
+                          className="bg-background border-border-subtle focus:border-glow-blue transition-colors"
                         />
                       </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="subject">Subject</Label>
+                        <Input
+                          id="subject"
+                          name="subject"
+                          placeholder="How can we help?"
+                          required
+                          className="bg-background border-border-subtle focus:border-glow-blue transition-colors"
+                        />
+                      </div>
+                    </div>
 
-                      <FormField
-                        control={form.control}
+                    <div className="space-y-2">
+                      <Label htmlFor="message">Message</Label>
+                      <Textarea
+                        id="message"
                         name="message"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Message</FormLabel>
-                            <FormControl>
-                              <Textarea
-                                placeholder="Tell us about your project or challenge..."
-                                rows={6}
-                                className="bg-background border-border-subtle focus:border-glow-blue transition-colors resize-none"
-                                {...field}
-                              />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
+                        placeholder="Tell us about your project or challenge..."
+                        rows={6}
+                        required
+                        className="bg-background border-border-subtle focus:border-glow-blue transition-colors resize-none"
                       />
+                    </div>
 
-                      <Button 
-                        type="submit" 
-                        variant="gradient" 
-                        size="lg" 
-                        className="w-full"
-                        disabled={isSubmitting}
-                      >
-                        {isSubmitting ? (
-                          'Sending...'
-                        ) : (
-                          <>
-                            Send Message
-                            <Send className="ml-2 w-4 h-4" />
-                          </>
-                        )}
-                      </Button>
+                    <Button 
+                      type="submit" 
+                      variant="gradient" 
+                      size="lg" 
+                      className="w-full"
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? (
+                        'Sending...'
+                      ) : (
+                        <>
+                          Send Message
+                          <Send className="ml-2 w-4 h-4" />
+                        </>
+                      )}
+                    </Button>
 
-                      <p className="text-sm text-muted-foreground text-center">
-                        Our experts will get back to you quickly to discuss your needs.
-                      </p>
-                    </form>
-                  </Form>
+                    <p className="text-sm text-muted-foreground text-center">
+                      Our experts will get back to you quickly to discuss your needs.
+                    </p>
+                  </form>
                 )}
               </GlowCard>
             </div>
