@@ -5,10 +5,10 @@ import { Button } from '@/components/ui/button';
 import logo from '@/assets/logo-hn2j.png';
 
 const navLinks = [
-  { href: '/', label: 'Accueil' },
+  { href: '/', label: 'Home' },
   { href: '/#expertise', label: 'Expertise' },
   { href: '/#services', label: 'Services' },
-  { href: '/#training', label: 'Monté en compétence' },
+  { href: '/#training', label: 'Training' },
   { href: '/contact', label: 'Contact' },
 ];
 
