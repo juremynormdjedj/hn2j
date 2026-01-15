@@ -70,7 +70,7 @@ export const HeroSection = () => {
           </p>
 
           {/* Duo */}
-          <Section dark>
+          <Section>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
             {duo.map((d, index) => (
               <GlowCard key={d.FullName} className="group">
