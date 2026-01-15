@@ -51,6 +51,11 @@ export const HeroSection = () => {
       {/* Content */}
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 bg-card/50 backdrop-blur-sm border border-border-subtle rounded-full px-4 py-2 mb-8 animate-fade-in">
+            <Sparkles className="w-4 h-4 text-glow-purple" />
+            <span className="text-sm text-muted-foreground">Architecte Technique et Fonctionnel de vos outils Microsoft</span>
+          </div>
           
           {/* Headline */}
           <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-bold text-foreground mb-6 leading-tight animate-fade-in" style={{ animationDelay: '0.1s' }}>
