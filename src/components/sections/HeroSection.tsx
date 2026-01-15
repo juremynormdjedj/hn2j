@@ -54,7 +54,7 @@ export const HeroSection = () => {
 
           {/* Subheadline */}
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-            Donner aux équipes métiers et informatiques les moyens de réussir grâce aux technologies Microsoft.
+            Donner aux équipes métiers et informatiques les moyens de réussir grâce aux technologies Microsoft.<br/>
             Des services experts de conseil, de montée en compétence et d’accompagnement, adaptés à votre parcours de transformation digitale.
           </p>
 
