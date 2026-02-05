@@ -1,7 +1,7 @@
 import { Section, SectionHeader } from '@/components/Section';
 import { GlowCard } from '@/components/GlowCard';
 import { 
-  Layers, 
+  Kanban, 
   Calendar, 
   Cloud, 
   Bot,
@@ -10,7 +10,7 @@ import {
 
 const technologies = [
   {
-    icon: Layers,
+    icon: Kanban,
     title: 'Power Platform',
     description: 'Power Apps, Power Automate, Power BI, and Power Pages for low-code business solutions.',
     features: ['Custom App Development', 'Process Automation', 'Business Intelligence', 'Portal Solutions'],
