@@ -2,7 +2,7 @@ import { Section, SectionHeader } from '@/components/Section';
 import { GlowCard } from '@/components/GlowCard';
 import { 
   Layers, 
-  Database, 
+  Calendar, 
   Cloud, 
   Bot,
   ArrowRight
@@ -16,7 +16,7 @@ const technologies = [
     features: ['Custom App Development', 'Process Automation', 'Business Intelligence', 'Portal Solutions'],
   },
   {
-    icon: Database,
+    icon: Calendar,
     title: 'Dynamics 365 CE',
     description: 'Customer Engagement solutions for sales, marketing, and customer service excellence.',
     features: ['Sales Automation', 'Customer Insights', 'Service Management', 'Field Service'],
